@@ -1,6 +1,7 @@
 package com.gescom.gescom.web;
 
 import com.gescom.gescom.entities.Client;
+import com.gescom.gescom.entities.Person;
 import com.gescom.gescom.entities.Provider;
 import com.gescom.gescom.models.PersonModel;
 import com.gescom.gescom.services.PersonService;
@@ -51,33 +52,29 @@ public class PersonRestController {
     List<Client> findAllClient() {
         return  this.personService.findAllClients();
     }
-
     @GetMapping("/persons/providers")
     List<Provider> findAllProviders() {
         return  this.personService.findAllProviders();
     }
 
+    @GetMapping("/persons/{id}")
+    Person findOneById(@PathVariable("id") long id) {
+        return this.personService.findOnePerson(id);
+    }
+
+    @GetMapping("/persons/clients/{id}")
+    Client findOneClientById(@PathVariable("id") long id) {
+        return this.personService.findOneClientById(id);
+    }
+
+    @GetMapping("/persons/providers/{id}")
+    Provider findOneProvider(@PathVariable("id") long id) {
+        return  this.personService.findOneProviderById(id);
+    }
+
     @DeleteMapping("/persons/{id}")
-    void delete(@PathVariable("id") long id) {
+    void deletePerson(@PathVariable("id") long id) {
         this.personService.deletePerson(id);
     }
-
-    @PutMapping("/persons/{id}")
-   void  editProvider(@RequestBody PersonModel personModel, @PathVariable("id") long id){
-
-        Provider provider =  new Provider();
-
-        provider.setAccountBank(personModel.getAccountBank());
-        provider.setRaisonSocial(personModel.getRaisonSocial());
-        provider.setName(personModel.getName());
-        provider.setAddress(personModel.getAddress());
-        provider.setTelephone(personModel.getTelephone());
-        provider.setEmail(personModel.getEmail());
-
-        this.personService.editPerson(provider, id);
-
-    }
-
-    // suite
 
 }

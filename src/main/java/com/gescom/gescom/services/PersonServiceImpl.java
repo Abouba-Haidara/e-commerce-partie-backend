@@ -83,4 +83,19 @@ public class PersonServiceImpl implements PersonService{
             this.repository.save(person);
         }
     }
+
+    @Override
+    public Person findOnePerson(long id) {
+        return   this.repository.getReferenceById(id);
+    }
+
+    @Override
+    public Provider findOneProviderById(long id) {
+        return (Provider) this.repository.getReferenceById(id);
+    }
+
+    @Override
+    public Client findOneClientById(long id) {
+        return (Client) this.repository.getReferenceById(id);
+    }
 }

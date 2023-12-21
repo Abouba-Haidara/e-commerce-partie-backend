@@ -9,4 +9,5 @@ public interface CategoryService {
     List<Category> findAll();
     void delete(long id);
     void editCategory(Category category, long id);
+    Category findOne(long id);
 }

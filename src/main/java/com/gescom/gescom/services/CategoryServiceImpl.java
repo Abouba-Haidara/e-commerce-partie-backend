@@ -34,4 +34,9 @@ public class CategoryServiceImpl implements CategoryService{
       c.setDesignation(category.getDesignation());
       this.repository.save(c);
     }
+
+    @Override
+    public Category findOne(long id) {
+        return this.repository.getReferenceById(id);
+    }
 }

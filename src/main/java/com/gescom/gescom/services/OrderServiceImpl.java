@@ -12,8 +12,8 @@ public class OrderServiceImpl implements OrderService{
         this.repository =  repository;
     }
     @Override
-    public void createOrder(Order order) {
-        this.repository.save(order);
+    public Order createOrder(Order order) {
+        return this.repository.save(order);
     }
 
     @Override
@@ -33,5 +33,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public List<Order> findAllOrder() {
         return this.repository.findAll();
+    }
+
+    @Override
+    public Order findOrder(long id) {
+        return this.repository.getReferenceById(id);
     }
 }

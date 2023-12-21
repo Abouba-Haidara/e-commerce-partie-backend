@@ -14,4 +14,7 @@ public interface PersonService {
     void deletePerson(long  id);
     void editPerson(Provider provider, long id);
     void editPerson(Client client, long id);
+    Person findOnePerson(long id);
+    Provider findOneProviderById(long id);
+    Client findOneClientById(long id);
 }

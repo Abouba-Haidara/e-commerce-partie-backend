@@ -41,4 +41,9 @@ public class ProductServiceImpl implements ProductService{
 
         return p;
     }
+
+    @Override
+    public Product findProduct(long id) {
+        return repository.getReferenceById(id);
+    }
 }
