@@ -46,4 +46,9 @@ public class ProductServiceImpl implements ProductService{
     public Product findProduct(long id) {
         return repository.getReferenceById(id);
     }
+
+    @Override
+    public void deleteProductAll() {
+        this.repository.deleteAll();
+    }
 }

@@ -1,5 +1,6 @@
 package com.gescom.gescom.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class Category implements Serializable {
     private long id;
     @Column(nullable = false, length = 60)
     private String designation;
+    @JsonBackReference
     @OneToMany(mappedBy = "category")
     Collection<Product> products =  new ArrayList<>();
 }

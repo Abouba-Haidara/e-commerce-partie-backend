@@ -47,6 +47,10 @@ public class PersonRestController {
             this.personService.createClient(client);
         }
     }
+    @GetMapping("/persons")
+    List<Person> findAllPersons() {
+        return  this.personService.findAll();
+    }
 
     @GetMapping("/persons/clients")
     List<Client> findAllClient() {
@@ -75,6 +79,11 @@ public class PersonRestController {
     @DeleteMapping("/persons/{id}")
     void deletePerson(@PathVariable("id") long id) {
         this.personService.deletePerson(id);
+    }
+
+    @DeleteMapping("/persons")
+    void deleteAll() {
+        this.personService.deletePersonAll();
     }
 
 }

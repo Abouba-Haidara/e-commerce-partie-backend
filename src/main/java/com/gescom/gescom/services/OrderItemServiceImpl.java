@@ -38,4 +38,9 @@ public class OrderItemServiceImpl  implements OrderItemService{
     public void delete(long id) {
 
     }
+
+    @Override
+    public void deleteAll() {
+        this.repository.deleteAll();
+    }
 }

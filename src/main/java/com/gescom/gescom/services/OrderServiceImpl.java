@@ -39,4 +39,9 @@ public class OrderServiceImpl implements OrderService{
     public Order findOrder(long id) {
         return this.repository.getReferenceById(id);
     }
+
+    @Override
+    public void deleteAll() {
+        this.repository.deleteAll();
+    }
 }

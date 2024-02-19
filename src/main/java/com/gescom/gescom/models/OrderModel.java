@@ -12,6 +12,7 @@ import java.util.Date;
 public class OrderModel {
     private long id;
     private Date date;
+    private String orderNumber;
     private double amount;
     private long clientId;
     private long paymentId;

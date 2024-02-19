@@ -38,6 +38,11 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
+    public List<Person> findAll() {
+        return  this.repository.findAll();
+    }
+
+    @Override
     public List<Client> findAllClients() {
         List<Client>  clients =  new ArrayList<>();
         for(Person p: this.repository.findAll()){
@@ -51,6 +56,10 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public void deletePerson(long id) {
         this.repository.deleteById(id);
+    }
+    @Override
+    public void deletePersonAll() {
+        this.repository.deleteAll();
     }
 
     @Override
@@ -91,11 +100,19 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public Provider findOneProviderById(long id) {
-        return (Provider) this.repository.getReferenceById(id);
+        Person person = this.repository.findById(id).orElse(null);;
+        if(person instanceof  Provider) {
+            return  (Provider) person;
+        }
+        return null;
     }
 
     @Override
     public Client findOneClientById(long id) {
-        return (Client) this.repository.getReferenceById(id);
+        Person person = this.repository.findById(id).orElse(null);;
+        if(person instanceof  Client) {
+           return  (Client) person;
+        }
+        return null;
     }
 }

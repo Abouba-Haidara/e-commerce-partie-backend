@@ -14,6 +14,5 @@ public class OrderItemModel {
     private long orderId;
     private long quantity;
     private double price;
-    private long  productId;
-    private List<OrderProductModel> products=new ArrayList<>();
+    private List<OrderProductModel> products = new ArrayList<>();
 }

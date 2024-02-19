@@ -10,6 +10,7 @@ public interface PersonService {
     void createProvider(Provider provider);
     List<Provider> findAllProviders();
     void createClient(Client client);
+    List<Person> findAll();
     List<Client> findAllClients();
     void deletePerson(long  id);
     void editPerson(Provider provider, long id);
@@ -17,4 +18,5 @@ public interface PersonService {
     Person findOnePerson(long id);
     Provider findOneProviderById(long id);
     Client findOneClientById(long id);
+    void deletePersonAll();
 }

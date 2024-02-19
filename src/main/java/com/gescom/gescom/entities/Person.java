@@ -1,8 +1,11 @@
 package com.gescom.gescom.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
@@ -10,8 +13,11 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="person_type",
         discriminatorType = DiscriminatorType.INTEGER)
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public abstract class Person implements Serializable {
-    @Id @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Serial
+    private static final long serialVersionUID = -8885817712041252438L;
+    @Id @GeneratedValue(strategy =GenerationType.AUTO)
     long id;
     private String name;
     @Column(unique = true)

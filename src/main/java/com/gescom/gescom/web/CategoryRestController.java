@@ -35,4 +35,9 @@ public class CategoryRestController {
         this.categoryService.delete(id);
     }
 
+    @DeleteMapping ("/categories")
+    void deleteAll() {
+         this.categoryService.deleteAll();
+    }
+
 }

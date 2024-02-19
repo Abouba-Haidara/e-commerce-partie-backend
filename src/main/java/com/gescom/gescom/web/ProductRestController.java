@@ -14,14 +14,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-public class ProductRestController {
-  private ProductService productService;
-  private CategoryService categoryService;
 
-  @PostMapping("/products")
+public class ProductRestController {
+  final private ProductService productService;
+  final private CategoryService categoryService;
+    ProductRestController(
+            final ProductService productService,
+            final CategoryService categoryService
+    ) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+    }
+
+    @PostMapping("/products")
   void createProduct(@RequestBody @Validated ProductModel productModel){
       Product product =  new Product();
       product.setTitle(productModel.getTitle());
@@ -42,6 +47,10 @@ public class ProductRestController {
       this.productService.deleteProduct(id);
   }
 
+    @DeleteMapping("/products")
+    void deleteProduct() {
+        this.productService.deleteProductAll();
+    }
 
 
 }

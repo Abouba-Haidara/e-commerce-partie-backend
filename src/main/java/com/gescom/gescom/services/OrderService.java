@@ -10,4 +10,5 @@ public interface OrderService {
     Order editOrder(Order order, long id);
     List<Order> findAllOrder();
     Order findOrder(long id);
+    void deleteAll();
 }

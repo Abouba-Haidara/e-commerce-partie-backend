@@ -29,6 +29,12 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
+    public void deleteAll() {
+        this.repository.deleteAll();
+    }
+
+
+    @Override
     public void editCategory(Category category, long id) {
       Category c =  this.repository.getReferenceById(id);
       c.setDesignation(category.getDesignation());
